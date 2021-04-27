@@ -32,20 +32,21 @@ class DnaIteratorTest {
                 "AGAAGG",
                 "CCACTA",
                 "TCACTG"};
-        assertEquals(RowIterator.findMutantSequences(dnaString), 0);
-        assertEquals(ColumnIterator.findMutantSequences(dnaString),0);
-        assertEquals(DiagonalIterator.findMutantSequences(dnaString),0);
+        assertEquals(0,RowIterator.findMutantSequences(dnaString));
+        assertEquals(0,ColumnIterator.findMutantSequences(dnaString));
+        assertEquals(0,DiagonalIterator.findMutantSequences(dnaString));
     }
 
     @Test
-    void findMutantSequences_true_ShouldThrowExceptionIfDnaStringIsNull(){
+    void findMutantSequences_true_ShouldNotThrowExceptionIfDnaStringIsNull(){
 //        assertThrows(NullPointerException.class,() ->{RowIterator.findMutantSequences(null);});
 //        assertThrows(NullPointerException.class,() ->{ColumnIterator.findMutantSequences(null);});
 //        assertThrows(NullPointerException.class,() ->{DiagonalIterator.findMutantSequences(null);});
 
-        assertEquals(RowIterator.findMutantSequences(null), 0);
-        assertEquals(ColumnIterator.findMutantSequences(null),0);
-        assertEquals(DiagonalIterator.findMutantSequences(null),0);
+        assertEquals(0,RowIterator.findMutantSequences(null));
+        assertEquals(0,ColumnIterator.findMutantSequences(null));
+        assertEquals(0,DiagonalIterator.findMutantSequences(null));
+
     }
 
     @Test
@@ -54,9 +55,21 @@ class DnaIteratorTest {
                 "ATGC",
                 "CAGT",
                 "TTGT"};
-        assertEquals(RowIterator.findMutantSequences(dnaString), 0);
-        assertEquals(ColumnIterator.findMutantSequences(dnaString),0);
-        assertEquals(DiagonalIterator.findMutantSequences(dnaString),0);
+        assertEquals(0,RowIterator.findMutantSequences(dnaString));
+        assertEquals(0,ColumnIterator.findMutantSequences(dnaString));
+        assertEquals(0,DiagonalIterator.findMutantSequences(dnaString));
+    }
+
+    @Test
+    void findMutantSequences_true_shouldThrowExceptionIfStringLengthVaries(){
+        String[] dnaString = {
+                "ATG",
+                "CAGT",
+                "TTATT",
+                "GTTA"};
+        assertEquals(0,RowIterator.findMutantSequences(dnaString));
+        assertEquals(0,ColumnIterator.findMutantSequences(dnaString));
+        assertEquals(0,DiagonalIterator.findMutantSequences(dnaString));
     }
 
 
