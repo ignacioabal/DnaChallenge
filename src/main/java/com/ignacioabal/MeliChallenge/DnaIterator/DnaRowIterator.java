@@ -2,13 +2,16 @@ package com.ignacioabal.MeliChallenge.DnaIterator;
 
 public class DnaRowIterator implements DnaIterator{
     private int mutantSequences = 0;
-    private final int MUTANT_DNA_LETTER_REPETITIONS = 4;
+    final int MUTANT_DNA_LETTER_REPETITIONS = 4;
 
     public DnaRowIterator() {
     }
 
     @Override
     public int findMutantSequences(String[] dna) {
+        if(dna == null) return 0;
+
+
         for (String dnaString: dna) {
             int rowLength = dnaString.length();
             String[] row= dnaString.split("");
@@ -31,10 +34,7 @@ public class DnaRowIterator implements DnaIterator{
 
                 if(currentLetter.equals(previousLetter)){
                     currentLetterRepetitions++;
-                    continue;
-                }
-
-                if(!currentLetter.equals(previousLetter)){
+                }else{
                     previousLetter=currentLetter;
                     currentLetterRepetitions=0;
                 }
