@@ -2,13 +2,11 @@ package com.ignacioabal.MeliChallenge.DnaIterator;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class DnaIteratorTest {
-    private final DnaIterator RowIterator = new DnaRowIterator();
-    private final DnaIterator ColumnIterator = new DnaColumnIterator();
-    private final DnaIterator DiagonalIterator = new DnaDiagonalIterator();
-
     @Test
     void findMutantSequences_true_DnaStringHasMutantSequences() {
         String[] dnaString = {
@@ -18,9 +16,30 @@ class DnaIteratorTest {
                 "AGAAGG",
                 "CCCCTA",
                 "TCACTG"};
-        assertEquals(RowIterator.findMutantSequences(dnaString), 1);
-        assertEquals(ColumnIterator.findMutantSequences(dnaString),1);
-        assertEquals(DiagonalIterator.findMutantSequences(dnaString),1);
+
+        String[] dnaString1 = {
+                "ATGCGA",
+                "CAGTGC",
+                "TTATGT",
+                "AGAAGG",
+                "CCCCTA",
+                "TCACTG"};
+        String[] dnaString2 = {
+                "ATGCGA",
+                "CAGTGC",
+                "TTATGT",
+                "AGAAGG",
+                "CCCCTA",
+                "TCACTG"};
+
+        DnaIterator dnaIterator = new DnaIterator(dnaString);
+
+        assertEquals(dnaIterator.findMutantSequences(), 3);
+
+        dnaIterator = new DnaIterator(dnaString1);
+
+        assertEquals(dnaIterator.findMutantSequences(), 3);
+
     }
 
     @Test
@@ -32,21 +51,17 @@ class DnaIteratorTest {
                 "AGAAGG",
                 "CCACTA",
                 "TCACTG"};
-        assertEquals(0,RowIterator.findMutantSequences(dnaString));
-        assertEquals(0,ColumnIterator.findMutantSequences(dnaString));
-        assertEquals(0,DiagonalIterator.findMutantSequences(dnaString));
+
+        DnaIterator dnaIterator = new DnaIterator(dnaString);
+
+        assertEquals(dnaIterator.findMutantSequences(), 0);
     }
 
     @Test
     void findMutantSequences_true_ShouldNotThrowExceptionIfDnaStringIsNull(){
-//        assertThrows(NullPointerException.class,() ->{RowIterator.findMutantSequences(null);});
-//        assertThrows(NullPointerException.class,() ->{ColumnIterator.findMutantSequences(null);});
-//        assertThrows(NullPointerException.class,() ->{DiagonalIterator.findMutantSequences(null);});
+        DnaIterator dnaIterator = new DnaIterator(null);
 
-        assertEquals(0,RowIterator.findMutantSequences(null));
-        assertEquals(0,ColumnIterator.findMutantSequences(null));
-        assertEquals(0,DiagonalIterator.findMutantSequences(null));
-
+        assertEquals(dnaIterator.findMutantSequences(), 0);
     }
 
     @Test
@@ -55,21 +70,25 @@ class DnaIteratorTest {
                 "ATGC",
                 "CAGT",
                 "TTGT"};
-        assertEquals(0,RowIterator.findMutantSequences(dnaString));
-        assertEquals(0,ColumnIterator.findMutantSequences(dnaString));
-        assertEquals(0,DiagonalIterator.findMutantSequences(dnaString));
+
+
+
+        DnaIterator dnaIterator = new DnaIterator(dnaString);
+
+        assertEquals(dnaIterator.findMutantSequences(), 0);
     }
 
     @Test
-    void findMutantSequences_true_shouldThrowExceptionIfStringLengthVaries(){
+    void findMutantSequences_true_shouldNotThrowExceptionIfStringLengthVaries(){
         String[] dnaString = {
                 "ATG",
                 "CAGT",
                 "TTATT",
                 "GTTA"};
-        assertEquals(0,RowIterator.findMutantSequences(dnaString));
-        assertEquals(0,ColumnIterator.findMutantSequences(dnaString));
-        assertEquals(0,DiagonalIterator.findMutantSequences(dnaString));
+
+        DnaIterator dnaIterator = new DnaIterator(dnaString);
+
+        assertEquals(dnaIterator.findMutantSequences(), 0);
     }
 
 

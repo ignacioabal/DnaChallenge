@@ -6,8 +6,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DnaAnalyzerTest {
-    private final DnaAnalyzer dnaAnalyzer = new DnaAnalyzer();
-
+    /*
+    * isMutant
+    */
     @Test
     void isMutant_true_dnaHasMutantSequences(){
         String[] dnaString = {
@@ -18,7 +19,7 @@ class DnaAnalyzerTest {
                 "CCCCTA",
                 "TCACTG"};
 
-        assertTrue(dnaAnalyzer.isMutant(dnaString));
+        assertTrue(DnaAnalyzer.isMutant(dnaString));
     }
 
     @Test
@@ -31,12 +32,54 @@ class DnaAnalyzerTest {
                 "CCACTA",
                 "TCACTG"};
 
-        assertFalse(dnaAnalyzer.isMutant(dnaString));
+        assertFalse(DnaAnalyzer.isMutant(dnaString));
     }
 
     @Test
     void isMutant_true_returnsFalseIfDnaIsNull(){
-        assertFalse(dnaAnalyzer.isMutant(null));
+        assertFalse(DnaAnalyzer.isMutant(null));
+    }
+
+    /*
+    * isDnaValidForAnalysis
+    */
+    @Test
+    void isDnaValidForAnalysis_ShouldReturnFalseWhenDnaIsNull(){
+        assertFalse(DnaAnalyzer.isDnaValidForAnalysis(null));
+    }
+
+    @Test
+    void isDnaValidForAnalysis_ShouldReturnFalseIfDnaHasDifferentRowLengths(){
+        String[] dnaString = {
+                "ATG",
+                "CAGT",
+                "TTATT",
+                "GTTA"};
+
+        assertFalse(DnaAnalyzer.isDnaValidForAnalysis(dnaString));
+    }
+
+    @Test
+    void isDnaValidForAnalysis_shouldReturnTrueOnValidDna(){
+        String[] dnaString = {
+                "ATGCGA",
+                "CAGTGC",
+                "TTATGT",
+                "AGAAGG",
+                "CCCCTA",
+                "TCACTG"};
+
+        String[] dnaString2 = {
+                "ATGCGA",
+                "CAGTGC",
+                "TTGTCT",
+                "AGAAGG",
+                "CCACTA",
+                "TCACTG"};
+
+        assertTrue(DnaAnalyzer.isDnaValidForAnalysis(dnaString));
+        assertTrue(DnaAnalyzer.isDnaValidForAnalysis(dnaString2));
+
     }
 
 }
