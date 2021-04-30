@@ -11,6 +11,10 @@ public class DnaIterator {
           mutantSequences = 0;
      }
 
+
+     /**
+      * @return {@code int} Number of mutant sequences found in Dna.
+      */
      public int findMutantSequences(){
           if(dna == null) return 0;
 
@@ -21,6 +25,10 @@ public class DnaIterator {
           return mutantSequences;
      }
 
+
+     /**
+      * Finds mutant sequences in Dna rows.
+      */
      private void findMutantSequencesInRows(){
         for (String dnaString: dna) {
              int rowLength = dnaString.length();
@@ -52,6 +60,9 @@ public class DnaIterator {
         }
    }
 
+     /**
+      * Finds mutant sequences in Dna's Columns.
+      */
      private void findMutantSequencesInColumns() {
           int rowLength = dna[0].length();
 
@@ -85,6 +96,9 @@ public class DnaIterator {
           }
      }
 
+     /**
+      * Finds mutant sequences in Dna's diagonals.
+      */
      private void findMutantSequencesInDiagonals() {
           int amountOfStrings = dna.length;
           int rowLenght = dna[0].length();

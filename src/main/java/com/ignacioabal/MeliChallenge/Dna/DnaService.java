@@ -15,6 +15,11 @@ public class DnaService {
         this.dnaRepository = dnaRepository;
     }
 
+    /**
+     * Analyzes a Dna class to see if it's mutant.
+     *
+     * @param dna Dna to analyze.
+     */
     public void analyzeDna(Dna dna){
         dna.isDnaMutant();
         dna.parseDnaArrayToString();
@@ -23,6 +28,9 @@ public class DnaService {
         }
     }
 
+    /**
+     * @return {@code Map<String, String>} with number of human, mutant DNA's and the mutant-to-human ratio.
+     */
     public Map<String,String> getDatabaseStatistics(){
         int mutantCount = dnaRepository.countMutantRecords();
         int humanCount = dnaRepository.countHumanRecords();
@@ -36,6 +44,10 @@ public class DnaService {
         return responseBody;
     }
 
+    /**
+     * @param dna Dna data to search for in the database.
+     * @return {@code true} if dna record exists in databse.
+     */
     private boolean dnaRecordExists(Dna dna){
        return dnaRepository.dnaRecordExists(dna);
     }

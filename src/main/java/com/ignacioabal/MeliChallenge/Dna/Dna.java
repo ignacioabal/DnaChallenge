@@ -26,12 +26,15 @@ public class Dna{
     public boolean isMutant;
 
     @Transient
-    public boolean isDnaMutant(){
-        if(!DnaAnalyzer.isDnaValidForAnalysis(dna)) return false;
+    public void isDnaMutant(){
+        if(!DnaAnalyzer.isDnaValidForAnalysis(dna)) return;
         isMutant = DnaAnalyzer.isMutant(dna);
-        return isMutant;
     }
 
+    /*
+    * Parses the class' Dna property from an array of Strings to a String value.
+    *
+    * */
     @Transient
     public void parseDnaArrayToString(){
         StringBuffer stringBuffer = new StringBuffer();
