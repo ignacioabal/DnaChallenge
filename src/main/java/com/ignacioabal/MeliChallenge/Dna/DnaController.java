@@ -1,6 +1,5 @@
 package com.ignacioabal.MeliChallenge.Dna;
 
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +20,7 @@ public class DnaController {
     @PostMapping("/mutant")
     public ResponseEntity isMutant(@RequestBody Dna dna){
         dnaService.analyzeDna(dna);
-        if(dna.isMutant){
+        if(dna.isMutant()){
             return new ResponseEntity(HttpStatus.OK);
         }else{
             return new ResponseEntity(HttpStatus.FORBIDDEN);

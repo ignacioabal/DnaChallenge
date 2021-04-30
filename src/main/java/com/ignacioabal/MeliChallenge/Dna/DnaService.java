@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Service
@@ -19,7 +18,7 @@ public class DnaService {
     public void analyzeDna(Dna dna){
         dna.isDnaMutant();
         dna.parseDnaArrayToString();
-        if(dna.dna != null && !dnaRecordExists(dna)){
+        if(dna.getDna() != null && !dnaRecordExists(dna)){
             dnaRepository.save(dna);
         }
     }
@@ -38,7 +37,7 @@ public class DnaService {
     }
 
     private boolean dnaRecordExists(Dna dna){
-       return dnaRepository.dnaRecordExists(dna).isPresent();
+       return dnaRepository.dnaRecordExists(dna);
     }
 
 }
