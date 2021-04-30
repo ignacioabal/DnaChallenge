@@ -1,10 +1,7 @@
 package com.ignacioabal.MeliChallenge.Dna;
 
 import com.ignacioabal.MeliChallenge.DnaAnalyzer.DnaAnalyzer;
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
-import org.hibernate.annotations.TypeDefs;
-import org.springframework.web.bind.annotation.GetMapping;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.Arrays;
@@ -12,7 +9,6 @@ import java.util.Arrays;
 @Entity
 @Table
 public class Dna{
-
     @Id
     @SequenceGenerator(name="dna_sequence", sequenceName = "dna_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "dna_sequence")
@@ -21,9 +17,11 @@ public class Dna{
     @Transient
     public String[] dna;
 
+    @NotNull
     @Column(name = "dna")
     public String dnaString;
 
+    @NotNull
     @Column
     public boolean isMutant;
 
