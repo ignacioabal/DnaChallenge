@@ -7,4 +7,4 @@
 { "adn": "{Secuencia de ADN}" }
 `
 
-- Para recibir estadisticas de la base de datos hacer una `GET` request a `{url}/stats`. ej: `localhost:8080/mutants`.
+- Para recibir estadisticas de la base de datos hacer una `GET` request a `{url}/stats`. ej: `localhost:8080/stats`.
