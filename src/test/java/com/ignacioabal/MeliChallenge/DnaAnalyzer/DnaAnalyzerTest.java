@@ -1,16 +1,25 @@
 package com.ignacioabal.MeliChallenge.DnaAnalyzer;
 
 import com.ignacioabal.MeliChallenge.DnaIterator.DnaIterator;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class DnaAnalyzerTest {
+
+    private AutoCloseable autoCloseable;
+
     /*
     * isMutant
     */
     @Test
-    void isMutant_true_dnaHasMutantSequences(){
+    void isMutant_dnaHasMutantSequences(){
         String[] dnaString = {
                 "ATGCGA",
                 "CAGTGC",
@@ -82,4 +91,16 @@ class DnaAnalyzerTest {
 
     }
 
+    @Test
+    void isDnaValidForAnalysis() {
+        String[] dnaString = {
+                "ATGCGA",
+                "CAGTGC",
+                "TTATGT",
+                "AGAAGG",
+                "CCCCTA",
+                "TCACTG"};
+        assertFalse(DnaAnalyzer.isDnaValidForAnalysis(null));
+        assertTrue(DnaAnalyzer.isDnaValidForAnalysis(dnaString));
+    }
 }

@@ -1,34 +1,46 @@
 package com.ignacioabal.MeliChallenge.Dna;
 
-import org.apache.http.HttpStatus;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.client.methods.RequestBuilder;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.IOException;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.verify;
 
 class DnaControllerTest {
 
-//    @Test
-//    void isMutant() throws ClientProtocolException, IOException {
-//
-//        HttpUriRequest request = new RequestBuilder("POST").setEntity(new StringEntity("{}"));
-//
-//        HttpResponse httpResponse = (HttpResponse) HttpClientBuilder.create().build().execute( request );
-//
-//        assertEquals(HttpStatus.SC_OK, httpResponse.statusCode());
-//    }
-//
-//    @Test
-//    void getStatistics() {
-//    }
+    @Mock
+    private DnaService dnaService;
+    @Mock
+    private Dna dna;
+    @Autowired
+    private DnaController dnaController;
+    private AutoCloseable autoCloseable;
+
+    @BeforeEach
+    void setUp() {
+        autoCloseable = MockitoAnnotations.openMocks(this);
+        dnaController = new DnaController(dnaService);
+    }
+
+    @AfterEach
+    void tearDown() throws Exception {
+        autoCloseable.close();
+    }
+
+    @Test
+    void isMutant_verifyDnaServiceAndDnaClassMethodCalls() {
+        dnaController.isMutant(dna);
+
+        verify(dnaService).analyzeDna(dna);
+        verify(dna).isMutant();
+    }
+
+    @Test
+    void getStatistics() {
+        dnaController.getStatistics();
+        verify(dnaService).getDatabaseStatistics();
+    }
 }
