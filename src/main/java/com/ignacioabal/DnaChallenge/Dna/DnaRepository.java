@@ -1,4 +1,4 @@
-package com.ignacioabal.MeliChallenge.Dna;
+package com.ignacioabal.DnaChallenge.Dna;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

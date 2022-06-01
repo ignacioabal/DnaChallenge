@@ -1,4 +1,4 @@
-# MeliChallenge
+# DnaChallenge
 
 
 - Para analizar un ADN hacer un `POST` request a `{url}/mutants`( ej: `localhost:8080/mutants` ), con la sequencia de adn en el cuerpo de la request con el siguiente formato: 

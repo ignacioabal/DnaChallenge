@@ -1,6 +1,6 @@
-package com.ignacioabal.MeliChallenge.Dna;
+package com.ignacioabal.DnaChallenge.Dna;
 
-import com.ignacioabal.MeliChallenge.DnaAnalyzer.DnaAnalyzer;
+import com.ignacioabal.DnaChallenge.DnaAnalyzer.DnaAnalyzer;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;

@@ -1,15 +1,9 @@
-package com.ignacioabal.MeliChallenge.DnaAnalyzer;
+package com.ignacioabal.DnaChallenge.DnaAnalyzer;
 
-import com.ignacioabal.MeliChallenge.DnaIterator.DnaIterator;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class DnaAnalyzerTest {
 

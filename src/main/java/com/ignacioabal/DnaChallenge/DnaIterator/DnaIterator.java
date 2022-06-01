@@ -1,4 +1,4 @@
-package com.ignacioabal.MeliChallenge.DnaIterator;
+package com.ignacioabal.DnaChallenge.DnaIterator;
 
 public class DnaIterator {
       final int MUTANT_DNA_LETTER_REPETITIONS = 4;

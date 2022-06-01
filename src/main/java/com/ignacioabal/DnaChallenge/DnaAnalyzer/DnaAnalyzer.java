@@ -1,6 +1,6 @@
-package com.ignacioabal.MeliChallenge.DnaAnalyzer;
+package com.ignacioabal.DnaChallenge.DnaAnalyzer;
 
-import com.ignacioabal.MeliChallenge.DnaIterator.DnaIterator;
+import com.ignacioabal.DnaChallenge.DnaIterator.DnaIterator;
 
 public class DnaAnalyzer {
 

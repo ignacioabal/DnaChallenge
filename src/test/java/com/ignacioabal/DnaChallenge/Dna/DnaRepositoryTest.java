@@ -1,4 +1,4 @@
-package com.ignacioabal.MeliChallenge.Dna;
+package com.ignacioabal.DnaChallenge.Dna;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
